@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  simpleproject.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"

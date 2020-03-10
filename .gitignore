@@ -1,0 +1,11 @@
+src/SimpleProject/SimpleProject/obj/
+src/SimpleProject/.idea/
+src/SimpleProject/.vs/
+src/SimpleProject/bin/
+src/SimpleProject/obj/
+src/SimpleProject/SimpleProject/bin/
+src/SimpleProject/SimpleProject.Data/obj/
+src/SimpleProject/SimpleProject.Api/obj/
+src/SimpleProject/SimpleProject.Api/bin/
+src/SimpleProject/SimpleProject.Api/SimpleProject.csproj.user
+src/SimpleProject/SimpleProject.Data/bin/
