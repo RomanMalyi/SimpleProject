@@ -25,9 +25,12 @@ services:
       - POSTGRES_USER=simpleprojectuser
       - POSTGRES_PASSWORD=strongpassword2
       - POSTGRES_DB=simpleprojectdb
+      - PG_SYSTEM_SHARED_BUFFERS=3000MB
+      - PG_SYSTEM_MAX_CONNECTIONS=1000
+    command: ["-c", "shared_buffers=3000MB", "-c", "max_connections=1000"]
     networks:
       - simpleproject
-      
+
 networks:
   simpleproject:
     driver: bridge
