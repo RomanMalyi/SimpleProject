@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SimpleProject.Data.Models;
@@ -21,15 +19,6 @@ namespace SimpleProject.Data.Repositories
             return await _dbContext.Entities
                 .AsNoTracking()
                 .FirstOrDefaultAsync(e => e.Id == id);
-        }
-
-        public async Task<IEnumerable<Entity>> Get(int skip, int take)
-        {
-            return await _dbContext.Entities
-                .AsNoTracking()
-                .Skip(skip)
-                .Take(take)
-                .ToListAsync();
         }
 
         public async Task Create(Entity entity)
