@@ -21,11 +21,11 @@ namespace SimpleProject
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SimpleProjectContext>(options =>
+            services.AddDbContextPool<SimpleProjectContext>(options =>
             {
                 options.UseNpgsql(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ??
                                   throw new Exception("Empty connection string."));
-            });
+            }, 2000);
 
             services.AddScoped<SimpleRepository>();
 
