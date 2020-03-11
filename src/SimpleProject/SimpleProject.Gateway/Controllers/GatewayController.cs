@@ -51,15 +51,6 @@ namespace SimpleProject.Gateway.Controllers
 
             return await GetResult(response);
         }
-        
-        [HttpGet("loaderio-5c10c5125fe7077558e7ab9f0edfea3a")]
-        public IActionResult GetTest()
-        {
-            byte[] byteArray = Encoding.UTF8.GetBytes("loaderio-5c10c5125fe7077558e7ab9f0edfea3a");
-            MemoryStream stream = new MemoryStream(byteArray);
-
-            return File(stream, "application/octet-stream");
-        }
 
         private async Task<IActionResult> GetResult(HttpResponseMessage response)
         {
