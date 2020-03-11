@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimpleProject.Data.Models;
@@ -14,6 +16,16 @@ namespace SimpleProject.Controllers
         {
             _simpleRepository = simpleRepository;
         }
+
+        [HttpGet("loaderio-9acf12a0712b29568095aaffa117ff2b")]
+        public IActionResult GetTest()
+        {
+            byte[] byteArray = Encoding.UTF8.GetBytes("loaderio-9acf12a0712b29568095aaffa117ff2b");
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            return File(stream, "application/octet-stream");
+        }
+
 
         [HttpGet("entities/{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
