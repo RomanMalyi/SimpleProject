@@ -19,14 +19,14 @@ namespace SimpleProject.Controllers
             IMemoryCache cache)
         {
             _simpleRepository = simpleRepository;
-            this._cache = cache;
+            _cache = cache;
         }
 
         [HttpGet("entities/{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             if (_cache.TryGetValue(id, out Entity result)) return Ok(result);
-            
+
             result = await _simpleRepository.GetById(id);
             if (result == null) return NotFound();
             _cache.Set(id, result);
@@ -34,16 +34,27 @@ namespace SimpleProject.Controllers
             return Ok(result);
         }
 
-        [HttpGet("entities")]
-        public async Task<IActionResult> Get([FromQuery] int skip = 0, [FromQuery] int take = 20)
-        {
-            return Ok(await _simpleRepository.Get(skip, take));
-        }
-
         [HttpPost("entities")]
         public async Task<IActionResult> Create(Entity entity)
         {
             await _simpleRepository.Create(entity);
+            return Ok();
+        }
+
+        [HttpDelete("entities/{id:guid}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            if (_cache.TryGetValue(id, out Entity result))
+            {
+                await _simpleRepository.Delete(result);
+                _cache.Remove(id);
+            }
+            else
+            {
+                result = await _simpleRepository.GetById(id);
+                if (result != null) await _simpleRepository.Delete(result);
+            }
+
             return Ok();
         }
 
