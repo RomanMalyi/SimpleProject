@@ -18,7 +18,9 @@ namespace SimpleProject.Data.Repositories
 
         public async Task<Entity> GetById(Guid id)
         {
-            return await _dbContext.Entities.FirstOrDefaultAsync(e => e.Id == id);
+            return await _dbContext.Entities
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<IEnumerable<Entity>> Get(int skip, int take)

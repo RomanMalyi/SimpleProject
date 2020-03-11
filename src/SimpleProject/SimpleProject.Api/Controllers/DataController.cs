@@ -6,6 +6,7 @@ using SimpleProject.Data.Repositories;
 
 namespace SimpleProject.Controllers
 {
+    [ApiController]
     public class DataController : ControllerBase
     {
         private readonly SimpleRepository _simpleRepository;
