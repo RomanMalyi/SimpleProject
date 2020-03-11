@@ -6,3 +6,9 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "80"
+
+  simpleproject.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "80"

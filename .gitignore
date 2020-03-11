@@ -9,3 +9,6 @@ src/SimpleProject/SimpleProject.Api/obj/
 src/SimpleProject/SimpleProject.Api/bin/
 src/SimpleProject/SimpleProject.Api/SimpleProject.csproj.user
 src/SimpleProject/SimpleProject.Data/bin/
+src/SimpleProject/SimpleProject.Gateway/obj/
+src/SimpleProject/SimpleProject.Gateway/SimpleProject.Gateway.csproj.user
+src/SimpleProject/SimpleProject.Gateway/bin/

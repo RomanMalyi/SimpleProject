@@ -13,7 +13,7 @@ services:
       - simpleproject
     depends_on:
       - postgres
-      
+
   postgres:
     image: postgres:latest
     volumes:
@@ -30,6 +30,19 @@ services:
     command: ["-c", "shared_buffers=6000MB", "-c", "max_connections=2000"]
     networks:
       - simpleproject
+
+  simpleproject.gateway:
+    build:
+      context: .
+      dockerfile: SimpleProject.Gateway/Dockerfile
+    ports:
+      - "5050:80"
+    environment:
+      - SIMPLE_API_URL=http://simpleproject.api/
+    networks:
+      - simpleproject
+    depends_on:
+      - simpleproject.api
 
 networks:
   simpleproject:
