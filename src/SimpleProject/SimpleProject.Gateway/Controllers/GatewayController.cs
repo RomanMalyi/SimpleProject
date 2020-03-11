@@ -1,7 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimpleProject.Data.Models;
@@ -49,6 +50,15 @@ namespace SimpleProject.Gateway.Controllers
                 .DeleteAsync(_connectionSettings.SimpleApiUrl + $"entities/{id}");
 
             return await GetResult(response);
+        }
+        
+        [HttpGet("loaderio-5c10c5125fe7077558e7ab9f0edfea3a")]
+        public IActionResult GetTest()
+        {
+            byte[] byteArray = Encoding.UTF8.GetBytes("loaderio-5c10c5125fe7077558e7ab9f0edfea3a");
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            return File(stream, "application/octet-stream");
         }
 
         private async Task<IActionResult> GetResult(HttpResponseMessage response)
